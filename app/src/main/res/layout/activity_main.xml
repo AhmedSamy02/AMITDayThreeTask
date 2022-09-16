@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="Product"
+            type="com.example.daythreetask.Product" />
+        <variable
+            name="numberOfProducts"
+            type="String" />
+    </data>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            tools:context=".views.activities.AddToBasket">
+
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:padding="5dp"
+                android:src="@drawable/back"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/upload"
+                app:layout_constraintBottom_toBottomOf="@id/back"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/back" />
+
+            <ImageView
+                android:id="@+id/fruitPicture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:src="@{Product.productPicture}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/fruitName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:text="@{Product.productName}"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fruitPicture" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:background="@color/white"
+                android:src="@drawable/love"
+                app:layout_constraintBottom_toBottomOf="@id/fruitName"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/fruitName"
+                android:id="@+id/addToFavourites"
+                android:onClick="addToFavourits"
+                />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/favourites"
+                app:layout_constraintStart_toStartOf="@id/addToFavourites"
+                app:layout_constraintEnd_toEndOf="@id/addToFavourites"
+                app:layout_constraintTop_toTopOf="@id/addToFavourites"
+                app:layout_constraintBottom_toBottomOf="@id/addToFavourites"
+                android:id="@+id/removeFromFavourites"
+                />
+            <TextView
+                android:id="@+id/fruitDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:text="@{Product.productDescribtion}"
+                android:textColor="@color/grey"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/fruitName"
+                app:layout_constraintTop_toBottomOf="@id/fruitName" />
+
+            <ImageButton
+                android:id="@+id/decrease"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="15dp"
+                android:background="@color/white"
+                android:onClick="decrease"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_baseline_remove_24"
+                app:layout_constraintStart_toStartOf="@id/fruitDescription"
+                app:layout_constraintTop_toBottomOf="@id/fruitDescription" />
+
+            <TextView
+                android:id="@+id/numberOfProducts"
+                android:layout_width="40dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/counter_shape"
+                android:text="@{numberOfProducts}"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/decrease"
+                app:layout_constraintStart_toEndOf="@id/decrease"
+                app:layout_constraintTop_toTopOf="@id/decrease" />
+
+            <ImageButton
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="10dp"
+                android:background="@color/white"
+                android:onClick="Increase"
+                android:id="@+id/increase"
+                android:src="@drawable/ic_baseline_add_24"
+                app:layout_constraintBottom_toBottomOf="@id/decrease"
+                app:layout_constraintStart_toEndOf="@id/numberOfProducts"
+                app:layout_constraintTop_toTopOf="@id/decrease" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/decrease"
+                app:layout_constraintTop_toBottomOf="@id/decrease"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/red"
+                android:text="Excess Amount"
+                android:id="@+id/excess_amount"
+                />
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="30dp"
+                android:text="@{Product.price}"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/decrease"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/decrease" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp"
+                android:id="@+id/categories"
+                app:layout_constraintTop_toBottomOf="@id/excess_amount">
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="2dp"
+                    android:background="@color/gray"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginTop="20dp"
+                    android:textAlignment="center"/>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/price">
+
+                    <TextView
+                        android:id="@+id/Products"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:text="Product Detail"
+                        android:textColor="@color/black"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/downButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:src="@drawable/down"
+                        app:layout_constraintBottom_toBottomOf="@id/Products"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/Products" />
+
+                    <TextView
+                        android:layout_width="370dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginRight="20dp"
+                        android:text="@{Product.productDetails}"
+                        android:textColor="@color/gray2"
+                        android:textSize="14sp"
+                        app:layout_constraintRight_toRightOf="@id/downButton"
+                        app:layout_constraintStart_toStartOf="@id/Products"
+                        app:layout_constraintTop_toBottomOf="@id/Products" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="2dp"
+                    android:background="@color/gray"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginTop="5dp"
+                    android:textAlignment="center"/>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    >
+
+                    <TextView
+                        android:id="@+id/nutration"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:text="Nutritions"
+                        android:textColor="@color/black"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/nutration"
+                        app:layout_constraintBottom_toBottomOf="@id/nutration"
+                        android:src="@drawable/next"
+                        android:layout_marginRight="20dp"
+                        />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="2dp"
+                    android:background="@color/gray"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginTop="5dp"
+                    android:textAlignment="center"/>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:text="Review"
+                        android:id="@+id/review"
+                        android:textColor="@color/black"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/review"
+                        app:layout_constraintBottom_toBottomOf="@id/review"
+                        android:src="@drawable/next"
+                        android:id="@+id/nextRating"
+                        android:layout_marginRight="20dp"
+                        />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/rating"
+                        app:layout_constraintBottom_toBottomOf="@id/nextRating"
+                        app:layout_constraintRight_toLeftOf="@id/nextRating"
+                        app:layout_constraintTop_toTopOf="@id/nextRating"
+                        android:layout_marginRight="40dp"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:text="Add To Basket"
+                    android:textColor="@color/white"
+                    android:background="@drawable/button_shape"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginLeft="25dp"
+                    app:backgroundTint="@null"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="60dp"
+                    android:onClick="AddToBasket" />
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>
